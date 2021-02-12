@@ -1,0 +1,9 @@
+---
+ 
+deployment:
+ 
+ tasks:
+ 
+ - export DEPLOYPATH=/home/websites/tutorial.websitesaya.net
+ 
+ - /usr/bin/rsync -Paz * $DEPLOYPATH --delete
