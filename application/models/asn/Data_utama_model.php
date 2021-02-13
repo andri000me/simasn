@@ -1,6 +1,6 @@
 <?php
 
-class Asn_model extends CI_Model
+class Data_utama_model extends CI_Model
 {
     public function getmasterUnitkerja(){
         $data = $this->db->get('master_unitkerja');
