@@ -12,7 +12,7 @@ class Data_utama extends CI_Controller
 		}
 		date_default_timezone_set("Asia/Makassar");
         $this->load->model('user_model');
-        $this->load->model('asn/asn_model');
+        $this->load->model('asn/data_utama_model');
 	}
 	
 	public function uri(){
@@ -31,16 +31,16 @@ class Data_utama extends CI_Controller
         $this->db->where('nip', $sesi_nip);
         $data['user'] = $this->user_model->getmodUser()->row_array();
         $this->db->where('nip', $sesi_nip);
-		$data['dp'] = $this->asn_model->getmodDatapribadi()->row_array();
+		$data['dp'] = $this->data_utama_model->getmodDatapribadi()->row_array();
 		$this->db->where('nip', $sesi_nip);
-		$data['dpt'] = $this->asn_model->getmodDatapribadiTinjauan()->row_array();
-        $data['jk'] = $this->asn_model->getJeniskelamin()->result_array();
+		$data['dpt'] = $this->data_utama_model->getmodDatapribadiTinjauan()->row_array();
+        $data['jk'] = $this->data_utama_model->getJeniskelamin()->result_array();
         $data['kvkelamin'] = array_column($data['jk'], 'nm_kelamin', 'id_kelamin');
-        $data['snikah'] = $this->asn_model->getStatusnikah()->result_array();
+        $data['snikah'] = $this->data_utama_model->getStatusnikah()->result_array();
         $data['kvsnikah'] = array_column($data['snikah'], 'nm_skawin', 'id_skawin');
-        $data['agama'] = $this->asn_model->getAgama()->result_array();
+        $data['agama'] = $this->data_utama_model->getAgama()->result_array();
         $data['kvagama'] = array_column($data['agama'], 'nm_agama', 'id_agama');
-        $data['munitkerja'] = $this->asn_model->getmasterUnitkerja()->result_array();
+        $data['munitkerja'] = $this->data_utama_model->getmasterUnitkerja()->result_array();
         $data['kvuk'] = array_column( $data['munitkerja'], 'nm_unitkerja', 'id_unitkerja');
 		$this->load->view('asn/data_utama/data_pribadi', $data);
 	}
@@ -64,7 +64,7 @@ class Data_utama extends CI_Controller
 
 		$post = $this->input->post();
 		
-		$update = $this->asn_model->updatemodDatapribadiTinjauan($aksi, $post, $config, $configdok, $nip);
+		$update = $this->data_utama_model->updatemodDatapribadiTinjauan($aksi, $post, $config, $configdok, $nip);
 		if($update):
 			// $activity = 'Permohonan update data'.$post['nama'].' ('.$post['nip'].')';
 			// $this->pegawai_model->log_user($activity);
@@ -88,14 +88,14 @@ class Data_utama extends CI_Controller
         $this->db->where('nip', $sesi_nip);
         $data['user'] = $this->user_model->getmodUser()->row_array();
         $this->db->where('nip', $sesi_nip);
-		$data['idp'] = $this->asn_model->getmodIdentitaspegawai()->row_array();
+		$data['idp'] = $this->data_utama_model->getmodIdentitaspegawai()->row_array();
 		$this->db->where('nip', $sesi_nip);
-		$data['idpt'] = $this->asn_model->getmodIdentitaspegawaiTinjauan()->row_array();
-        $data['jpegawai'] = $this->asn_model->getJenisPegawai()->result_array();
+		$data['idpt'] = $this->data_utama_model->getmodIdentitaspegawaiTinjauan()->row_array();
+        $data['jpegawai'] = $this->data_utama_model->getJenisPegawai()->result_array();
         $data['kvpegawai'] = array_column($data['jpegawai'], 'jenis_pegawai', 'id_jenis_pegawai');
-		$data['kedudukan'] = $this->asn_model->getKedudukan()->result_array();
+		$data['kedudukan'] = $this->data_utama_model->getKedudukan()->result_array();
 		$data['kvkedudukan'] = array_column($data['kedudukan'], 'nm_kedudukan', 'id_kedudukan');
-		$data['munitkerja'] = $this->asn_model->getmasterUnitkerja()->result_array();
+		$data['munitkerja'] = $this->data_utama_model->getmasterUnitkerja()->result_array();
         $data['kvuk'] = array_column( $data['munitkerja'], 'nm_unitkerja', 'id_unitkerja');
 		$this->load->view('asn/data_utama/identitas_pegawai', $data);
 	}
@@ -109,7 +109,7 @@ class Data_utama extends CI_Controller
 		// $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
 		$post = $this->input->post();
 		
-		$update = $this->asn_model->updatemodIdentitaspegawaiTinjauan($aksi, $post, $nip);
+		$update = $this->data_utama_model->updatemodIdentitaspegawaiTinjauan($aksi, $post, $nip);
 		if($update):
 			// $activity = 'Permohonan update data'.$post['nama'].' ('.$post['nip'].')';
 			// $this->pegawai_model->log_user($activity);
@@ -133,10 +133,10 @@ class Data_utama extends CI_Controller
 		$this->db->where('nip', $sesi_nip);
 		$data['user'] = $this->user_model->getmodUser()->row_array();
 		$this->db->where('nip', $sesi_nip);
-		$data['mf'] = $this->asn_model->getmodFisik()->row_array();
+		$data['mf'] = $this->data_utama_model->getmodFisik()->row_array();
 		$this->db->where('nip', $sesi_nip);
-		$data['mft'] = $this->asn_model->getmodFisikTinjauan()->row_array();
-		$data['munitkerja'] = $this->asn_model->getmasterUnitkerja()->result_array();
+		$data['mft'] = $this->data_utama_model->getmodFisikTinjauan()->row_array();
+		$data['munitkerja'] = $this->data_utama_model->getmasterUnitkerja()->result_array();
         $data['kvuk'] = array_column( $data['munitkerja'], 'nm_unitkerja', 'id_unitkerja');
 		$this->load->view('asn/data_utama/data_fisik', $data);
 	}
@@ -146,7 +146,7 @@ class Data_utama extends CI_Controller
 		$nip = $this->session->userdata('nip');
 		$post = $this->input->post();
 		
-		$update = $this->asn_model->updatemodFisikTinjauan($aksi, $post, $nip);
+		$update = $this->data_utama_model->updatemodFisikTinjauan($aksi, $post, $nip);
 		if($update):
 			// $activity = 'Permohonan update data'.$post['nama'].' ('.$post['nip'].')';
 			// $this->pegawai_model->log_user($activity);

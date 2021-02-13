@@ -10,14 +10,14 @@ class Get_data extends CI_Controller {
                 //     redirect('login');
                 // }
                 $this->load->model('user_model');
-                $this->load->model('asn/asn_model');
+                $this->load->model('asn/data_utama_model');
 	}
 
         public function get_statuskedudukan()
         {
                 $status = $this->input->post('status');
                 $this->db->where('status_kedudukan', $status);
-                $data = $this->asn_model->getKedudukan()->result_array();
+                $data = $this->data_utama_model->getKedudukan()->result_array();
                 echo json_encode($data);
 
         }

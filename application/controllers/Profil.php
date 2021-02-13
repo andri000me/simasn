@@ -11,7 +11,7 @@ class Profil extends CI_Controller {
 		}
 		date_default_timezone_set("Asia/Makassar");
 		$this->load->model('user_model');
-		$this->load->model('asn/asn_model');
+		$this->load->model('asn/data_utama_model');
 		$this->load->model('admin/user_model');
     }
 
@@ -32,15 +32,15 @@ class Profil extends CI_Controller {
 		$data['user'] = $this->user_model->getmodUser()->row_array();
 		// Data Utama
 		$this->db->where('nip', $sesi_nip);
-		$data['asn'] = $this->asn_model->getViewasn()->row_array();
+		$data['asn'] = $this->data_utama_model->getViewasn()->row_array();
 
 		//Data Riwayat
 		$this->db->where('nip', $sesi_nip);
-		$data['pangkat'] = $this->asn_model->getmodulPangkat()->result_array();
+		$data['pangkat'] = $this->data_utama_model->getmodulPangkat()->result_array();
 		$this->db->where('nip', $sesi_nip);
-		$data['jabatan'] = $this->asn_model->getmodulJabatan()->result_array();
+		$data['jabatan'] = $this->data_utama_model->getmodulJabatan()->result_array();
 		$this->db->where('nip', $sesi_nip);
-		$data['edu'] = $this->asn_model->getmodulJnPendidikan()->result_array();
+		$data['edu'] = $this->data_utama_model->getmodulJnPendidikan()->result_array();
 
 		$this->load->view('asn/profil', $data);
 
