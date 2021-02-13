@@ -101,6 +101,25 @@ class Asn_model extends CI_Model
 		return $data;
     }
 
+    public function getViewpegawai()
+    {
+        $this->db->from('view_pegawai vpg'); 
+        $this->db->join('view_riwayatakhir vra', 'vra.nip = vpg.nip', 'left');
+        $this->db->join('mod_datapribadi mod', 'mod.nip = vpg.nip', 'left');
+        $this->db->join('mod_identitas moi', 'moi.nip = vpg.nip', 'left');
+        $this->db->join('mod_user mou', 'mou.nip = vpg.nip', 'left');
+        $this->db->join('master_jabatan mj', 'mj.id_jabatan = vra.jabatan_id', 'left');
+        $this->db->join('master_jenis_jabatan mjj', 'mjj.id_jenis_jabatan = vra.jenis_jabatan_id', 'left');
+        $this->db->join('master_jenjang_jabatan mjb', 'mjb.id_jenjang_jabatan = vra.jenjab_id', 'left');
+        $this->db->join('master_eselon me', 'me.id_eselon = vra.eselon_id', 'left');
+        $this->db->join('master_bidang mb', 'mb.id_bidang = vra.bagian_id', 'left');
+        $this->db->join('master_subbidang msb', 'msb.id_subbidang = vra.subbagian_id', 'left');
+        $this->db->join('master_golongan mg', 'mg.id_golongan = vra.golongan_id', 'left');
+        $this->db->join('master_unitkerja mu', 'mu.id_unitkerja = vra.unitkerja_id', 'left');
+        $data = $this->db->get();
+		return $data;
+    }
+
     public function getmodIdentitaspegawaiTinjauan(){
         
         $data = $this->db->get('mod_identitas_tinjauan');
