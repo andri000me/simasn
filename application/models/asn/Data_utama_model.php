@@ -103,10 +103,13 @@ class Data_utama_model extends CI_Model
 
     public function getViewpegawai()
     {
+        $this->db->select('vra.*, mod.nama, mod.nip, mod.gelardepan, mod.gelarbelakang, mop.tmt_pangkat, moc.tmt_cpns, mb.nm_bidang, msb.nm_subbidang, mj.nm_jabatan, mu.nm_unitkerja, mjb.jenjang_jabatan, mg.golongan, me.eselon, mg.pangkat'); 
         $this->db->from('view_pegawai vpg'); 
         $this->db->join('view_riwayatakhir vra', 'vra.nip = vpg.nip', 'left');
         $this->db->join('mod_datapribadi mod', 'mod.nip = vpg.nip', 'left');
         $this->db->join('mod_identitas moi', 'moi.nip = vpg.nip', 'left');
+        $this->db->join('mod_cpns moc', 'moc.nip = vpg.nip', 'left');
+        $this->db->join('mod_pangkat mop', 'mop.id = vra.id_mod_pangkat', 'inner');
         $this->db->join('mod_user mou', 'mou.nip = vpg.nip', 'left');
         $this->db->join('master_jabatan mj', 'mj.id_jabatan = vra.jabatan_id', 'left');
         $this->db->join('master_jenis_jabatan mjj', 'mjj.id_jenis_jabatan = vra.jenis_jabatan_id', 'left');

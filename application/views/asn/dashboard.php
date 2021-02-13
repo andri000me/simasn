@@ -64,13 +64,13 @@
                                               <!-- <i class="fa fa-check-circle text-success fs-16 m-t-10"></i> -->
                                             </div>
                                             <div class="col-xs-height p-l-20 p-b-5">
-                                                <h5 class="no-margin"><strong><?= strtoupper($user['nama']) ?></strong></h5>
+                                                <h5 class="no-margin"><strong><?= (!empty($asn['gelardepan']) ? $asn['gelardepan'].' ' : '') . strtoupper($user['nama'] . (!empty($asn['gelarbelakang']) ? $asn['gelarbelakang'] : '')) ?></strong></h5>
                                                 <p class="no-margin fs-16"><?= $user['nip'] > 0 ? 'NIP :  '.$user['nip'] : ''; ?></p>
                                                 <p class="hint-text m-t-5 m-b-5 small"><td>
                                                     <?php    
                                                         if(!empty($asn['jenis_jabatan_id'])){
                                                             if($asn['jenis_jabatan_id']==2){
-                                                                if($asn['id_eselon']==7){
+                                                                if($asn['eselon_id']==7){
                                                                     echo $asn['nm_jabatan'];
                                                                 }elseif($asn['jabatan_id']==706){
                                                                     echo  $asn['nm_jabatan'].' '.$asn['nm_unitkerja'] ; 

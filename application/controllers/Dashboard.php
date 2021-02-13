@@ -29,8 +29,8 @@ class Dashboard extends CI_Controller {
         $data = $this->uri();
         $this->db->where('nip', $sesi_nip);
         $data['user'] = $this->user_model->getmodUser()->row_array();
-        $this->db->where('nip', $sesi_nip);
-        $data['asn'] = $this->data_utama_model->getViewasn()->row_array();
+        $this->db->where('vra.nip', $sesi_nip);
+        $data['asn'] = $this->data_utama_model->getViewpegawai()->row_array();
         $data['kgbm'] = $this->data_utama_model->getmodKgbmax()->row_array();
         $this->load->view('asn/dashboard', $data);
         
