@@ -143,7 +143,7 @@
                                                     
                                                     ?>
                                                     <div class="card-header ">
-                                                        <div class="card-title">Masa Kerja <i class="fa fa-chevron-right"></i></div>
+                                                        <div class="card-title"> <?= $asn['tmt_cpns']; ?> <i class="fa fa-chevron-right"></i></div>
                                                     </div>
                                                     <div class="card-block text-center">
                                                         <h4 class="text-white"><span class="bold"><?= !empty($asn['tmt_cpns']) ? $y : '0' ?> </span><small>Tahun</small> <span class="bold"><?=!empty($asn['tmt_cpns']) ? $m : '0' ?> </span><small>Bulan</small></h4>
