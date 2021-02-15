@@ -179,7 +179,7 @@
                         if(login == 1){
                             window.location.href = "<?php echo base_url();?>dashboard";
                         }else{
-                            $('#warning_password').html('Wrong password!');
+                            $('#warning_password').html('Wrong password bro!');
                         }
                     }
                 });
