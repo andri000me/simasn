@@ -69,7 +69,7 @@
                             <div class="col-md-6 no-padding sm-p-l-10">
                                 <div class="checkbox ">
                                     <input type="checkbox" value="1" id="checkbox1">
-                                    <label for="checkbox1">Ingat Saya bro</label>
+                                    <label for="checkbox1">Ingat Saya</label>
                                 </div>
                             </div>
                             <div class="col-md-6 d-flex align-items-center justify-content-end m-b-10">
